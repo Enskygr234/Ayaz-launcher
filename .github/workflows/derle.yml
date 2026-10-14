@@ -1,0 +1,54 @@
+name: Derle
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  derle:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Tek dosya .exe olarak derle
+        run: >
+          dotnet publish AyazLauncher/AyazLauncher.csproj -c Release -r win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true
+          -p:DebugType=none
+          -o cikti
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AyazLauncher
+          path: cikti/AyazLauncher.exe
+
+      - name: Sürümü yayınla
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Ayaz Launcher ${{ github.ref_name }}
+          files: cikti/AyazLauncher.exe
+          body: |
+            ❄ **Ayaz Launcher** — kısayolla açılan 5 yuvalı hızlı başlatıcı.
+
+            **Kurulum yok:** `AyazLauncher.exe` dosyasını indir ve çalıştır. .NET kurmana gerek yok.
+
+            - `Ctrl + Space` ile ekranın altında çubuk açılır
+            - `1–5` ile ya da tıklayarak programı başlat
+            - Boş yuvaya tıkla → program seç · sağ tık → değiştir, taşı, kaldır
+            - Tepsi simgesinden kısayolu değiştir, "Windows ile başlat"ı aç
+
+            > Windows SmartScreen "tanınmayan uygulama" derse: **Ek bilgi → Yine de çalıştır**.
