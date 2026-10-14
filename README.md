@@ -6,8 +6,8 @@
 
 **Bir kısayola bas, ekranın altında 5 uygulamalık buzlu bir çubuk açılsın. Birine dokun, açılsın. ❄️**
 
-[![İndir](https://img.shields.io/badge/⬇_İndir-AyazLauncher.exe-5aa9ff?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Enskygr234/ayaz-launcher/releases/latest)
-[![Derle](https://img.shields.io/github/actions/workflow/status/Enskygr234/ayaz-launcher/derle.yml?style=for-the-badge&label=derleme)](https://github.com/Enskygr234/ayaz-launcher/actions)
+[![İndir](https://img.shields.io/badge/⬇_İndir-AyazLauncher.exe-5aa9ff?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Enskygr234/Ayaz-launcher/releases/latest)
+[![Derle](https://img.shields.io/github/actions/workflow/status/Enskygr234/Ayaz-launcher/derle.yml?style=for-the-badge&label=derleme)](https://github.com/Enskygr234/Ayaz-launcher/actions)
 
 <img src="docs/onizleme.png" alt="Ayaz Launcher çubuğunun görünümü" width="760">
 
@@ -25,7 +25,7 @@
 
 ## 🚀 Kullanım
 
-1. [Son sürümden](https://github.com/Enskygr234/ayaz-launcher/releases/latest) `AyazLauncher.exe` dosyasını indir ve çalıştır
+1. [Son sürümden](https://github.com/Enskygr234/Ayaz-launcher/releases/latest) `AyazLauncher.exe` dosyasını indir ve çalıştır
 2. Çubuk ilk açılışta kendiliğinden görünür. Yuvalara programlarını ekle
 3. Sonra istediğin an `Ctrl + Space` ile aç, `Esc` ile kapat
 
@@ -68,7 +68,7 @@ Tek dosya `.exe` için:
 dotnet publish AyazLauncher -c Release -r win-x64 --self-contained -p:PublishSingleFile=true
 ```
 
-Her `v*` etiketinde GitHub Actions `.exe` dosyasını derleyip sürüm olarak yayınlar.
+`AyazLauncher.csproj` içindeki `<Version>` numarası artırılıp `main`'e gönderildiğinde GitHub Actions `.exe` dosyasını derleyip yeni sürüm olarak yayınlar.
 
 ---
 

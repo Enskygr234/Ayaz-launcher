@@ -35,11 +35,28 @@ jobs:
           name: AyazLauncher
           path: cikti/AyazLauncher.exe
 
+      - name: Yeni sürüm mü?
+        id: surum
+        if: github.event_name != 'pull_request'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $v = ([xml](Get-Content AyazLauncher/AyazLauncher.csproj)).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
+          $etiket = "v$v"
+          gh release view $etiket --repo $env:GITHUB_REPOSITORY *> $null
+          $yeni = if ($LASTEXITCODE -eq 0) { "false" } else { "true" }
+          "etiket=$etiket" >> $env:GITHUB_OUTPUT
+          "yeni=$yeni" >> $env:GITHUB_OUTPUT
+          Write-Host "$etiket yeni mi: $yeni"
+
       - name: Sürümü yayınla
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: steps.surum.outputs.yeni == 'true'
         uses: softprops/action-gh-release@v2
         with:
-          name: Ayaz Launcher ${{ github.ref_name }}
+          tag_name: ${{ steps.surum.outputs.etiket }}
+          target_commitish: ${{ github.sha }}
+          name: Ayaz Launcher ${{ steps.surum.outputs.etiket }}
           files: cikti/AyazLauncher.exe
           body: |
             ❄ **Ayaz Launcher** — kısayolla açılan 5 yuvalı hızlı başlatıcı.
