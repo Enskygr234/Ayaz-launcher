@@ -49,6 +49,7 @@ jobs:
           "etiket=$etiket" >> $env:GITHUB_OUTPUT
           "yeni=$yeni" >> $env:GITHUB_OUTPUT
           Write-Host "$etiket yeni mi: $yeni"
+          exit 0
 
       - name: Sürümü yayınla
         if: steps.surum.outputs.yeni == 'true'
