@@ -77,3 +77,19 @@ dotnet publish AyazLauncher -c Release -r win-x64 --self-contained -p:PublishSin
 C# · WPF · .NET 8 &nbsp;|&nbsp; [Enskygr234](https://github.com/Enskygr234) tarafından ❄️ ile yapıldı
 
 </div>
+
+<!-- ENS:ALT -->
+---
+
+<div align="center">
+
+**❄️ ENS Developer'ın diğer projeleri**
+
+🖥️ Windows: [Buz Arşiv](https://github.com/Enskygr234/buz-arsiv) · [Masaüstü Kar](https://github.com/Enskygr234/masaustu-kar) · [Klavye Ayazı](https://github.com/Enskygr234/klavye-ayazi) · [ayaz](https://github.com/Enskygr234/ayaz) · [Güvenlik Kilidi](https://github.com/Enskygr234/GuvenlikKilidi)
+
+[🌐 Bütün projeler](https://enskygr234.github.io/ensdewloper.github.io/) · [👤 GitHub profilim](https://github.com/Enskygr234)
+
+<sub>Kış gelir, kod yazılır.</sub>
+
+</div>
+<!-- /ENS:ALT -->
